@@ -58,7 +58,7 @@ setInterval(async () => {
 
 // Port dinleme
 const PORT = process.env.PORT || 5000;
-app.listen(0.0.0.0,PORT, () => {
+app.listen(PORT,0.0.0.0, () => {
   console.log(`Server ${PORT} portunda çalışıyor`);
   console.log(`API Dokümantasyonu: http://localhost:${PORT}/api-docs`);
   console.log(`Swagger JSON: http://localhost:${PORT}/api-docs/swagger.json`);
