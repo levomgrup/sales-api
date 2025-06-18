@@ -13,6 +13,7 @@ import mongoose, { Document, Schema } from 'mongoose';
  *         - city
  *         - district
  *         - visitFrequency
+ *         - balance
  *       properties:
  *         storeName:
  *           type: string
@@ -48,6 +49,10 @@ import mongoose, { Document, Schema } from 'mongoose';
  *           description: "Ziyaret sıklığı (gün cinsinden)"
  *           minimum: 1
  *           default: 30
+ *         balance:
+ *           type: number
+ *           description: "Müşteri bakiyesi"
+ *           default: 0
  *         isActive:
  *           type: boolean
  *           description: Müşteri aktif mi?
@@ -63,6 +68,7 @@ import mongoose, { Document, Schema } from 'mongoose';
  *         routineName: "Pazartesi Rutini"
  *         initialPoints: 100
  *         visitFrequency: 1
+ *         balance: 0
  */
 
 export interface ICustomer extends Document {
@@ -76,6 +82,7 @@ export interface ICustomer extends Document {
   routineName: string;
   initialPoints: number;
   visitFrequency: number; // Ziyaret sıklığı (gün cinsinden)
+  balance: number; // Müşteri bakiyesi
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -131,6 +138,11 @@ const CustomerSchema = new Schema<ICustomer>(
       required: [true, 'Ziyaret sıklığı zorunludur'],
       min: 1, // En az 1 gün
       default: 30 // Varsayılan olarak 30 gün
+    },
+    balance: {
+      type: Number,
+      required: [true, 'Bakiye bilgisi zorunludur'],
+      default: 0
     },
     isActive: {
       type: Boolean,

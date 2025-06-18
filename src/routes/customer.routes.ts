@@ -116,6 +116,4 @@ router.put('/:id', updateCustomer);
  */
 router.delete('/:id', deleteCustomer);
 
-
-
 export default router; 
